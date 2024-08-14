@@ -1,0 +1,37 @@
+@charset "UTF-8";
+body {
+  background-color: bisque;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.title {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.desc {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+:root {
+  --bg-color: red;
+}
+
+/* Scss Değişkenler: 
+
+* Bir proje düşünelim bu projede belirli tema renkleri tekrar tekrar kullanılır.Sonrasında proje yöneticisi bu rengin değişmesini isterse gidip teker teker o renk hangi satırlarda kullanıldıysa bunları değiştirmemiz gerekir.Fakat Scss değişkenler(variables)  kullanımı ile bu rengin değeri bir yerde belirlenir sonrasında istenilen yerlerde kullanılır.Ve değişiklik gereksirse tek bir noktada bu sorun çözülür.
+
+* Değişkenler tanımlarıken başına $ konulur sonrasında bu değişkene bir ad verilir.Değişken adından sonra : konulup değişkenin değeri yazılır.
+
+*/
+.kapsayıcı {
+  width: 200px;
+  height: 250px;
+  background-color: orange;
+  margin: 10px;
+}/*# sourceMappingURL=style.css.map */

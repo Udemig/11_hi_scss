@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import "./variables";
 body {
   background-color: bisque;
   color: black;
@@ -27,7 +33,7 @@ body {
 * Değişkenler tanımlarıken başına $ konulur sonrasında bu değişkene bir ad verilir.Değişken adından sonra : konulup değişkenin değeri yazılır.
 
 */
-$bg-color: orange;
+$bg-color: aqua;
 $width: 200px;
 $height: 250px;
 
@@ -35,5 +41,160 @@ $height: 250px;
   width: $width;
   height: $height;
   background-color: $bg-color;
+  margin: 10px;
+}
+
+// .header {
+//   background-color: blueviolet;
+//   padding: 10px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
+// .header .logo {
+//   background-color: antiquewhite;
+//   padding: 10px;
+//   font-size: 40px;
+//   border-radius: 20px;
+// }
+// .header .nav {
+//   display: flex;
+//   gap: 10px;
+// }
+// .header .nav a {
+//   text-decoration: none;
+//   color: white;
+//   font-size: 20px;
+//   cursor: pointer;
+// }
+
+// .header button {
+//   border: none;
+//   outline: none;
+//   padding: 15px;
+//   margin-right: 30px;
+//   border-radius: 10px;
+// }
+
+// Css de iç içe elemanlara özellik verirken (ör: header içerisindeki nav içerisindeki ul içerisindeki li içerisindeki a etiketi) uzun uzun yazmamız belirli bir noktadan sonra gereksiz oluyor. Scss de bu uzun kapsayıcı kullanımı iç içe yazım ile daha kolaya indirgiyoruz. Bunu yaparken header ın içerisindeki elemanlara scope kapsamına dikkat ederek özellikler aktarılır. Sözde seçiciler( first-child,last-child,nth-child,hover) kullanımı ise bu özelliğin verileceği elemana & işaretinden sonra tıpkı css deki gibi verilebilir.
+.header {
+  background-color: blueviolet;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .logo {
+    background-color: antiquewhite;
+    padding: 10px;
+    font-size: 40px;
+    border-radius: 20px;
+  }
+  .nav {
+    display: flex;
+    gap: 10px;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        color: red;
+        scale: 1.2;
+      }
+      //   &::before {
+      //     content: "Yazılım";
+      //   }
+      // }
+    }
+  }
+  button {
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin-right: 30px;
+    border-radius: 10px;
+    &:hover {
+      background-color: darkgreen;
+      transform: scale(0.9);
+    }
+  }
+}
+
+/*
+* Scss Miras Yapısı: 
+- Css de ortak kodları farklı yerlerde kullanırız.(ör: bir kapsayıcı içerisindeki elemanları hizalarken flex yapısını aktif edeceksek kullanacağımız kodlar aynıdır.) Scss miras yapısı bunu bir ata kapsayıcı için oluşturup çocuk kapsayıcılara vermemize olanak tanır.
+
+* Miras yapısının kullanımı ise ortak özellikler bir class yapısı altınfa toplanır.Sonrasında bu özelliklerin kullanılacağı yerde '@extend' ile bu class yapısı çağrılır.
+
+*/
+
+.flex-yapısı {
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  background-color: chocolate;
+  margin-top: 30px;
+  padding: 10px;
+  @extend .flex-yapısı;
+  justify-content: space-between;
+  .left-area {
+    background-color: aqua;
+    @extend .flex-yapısı;
+    padding: 10px;
+    i {
+      font-size: 30px;
+    }
+  }
+  .center {
+    background-color: blue;
+    ul {
+      @extend .flex-yapısı;
+      gap: 10px;
+      padding: 20px;
+      li {
+        list-style: none;
+      }
+    }
+  }
+  .right-area {
+    background-color: antiquewhite;
+    width: 200px;
+  }
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+.btn1 {
+  background-color: darkblue;
+  color: wheat;
+  font-size: 22px;
+}
+.btn2 {
+  background-color: darkorange;
+}
+
+.btn1,
+.btn2 {
+  @extend .btn;
+}
+
+/*
+* Scss dosyalarının daha moduler yönetimi iiçin birden fazla dosya oluştururuz.(Değişkenler için ayrı bir dosya,header kısımı için ayrı bir dosya,footer,main,...) Style.scss haricinde oluşturulan bu diğer dosyaları tanımlarken dosya adının başına '_' konulur. Sonrasında bu dosyaya isim verilir.Son olarak bu dosya içerisindeki verileri kullanmak istediğimiz yerde 'import' ile dosya yolunu belirtiriz.
+
+*/
+
+.paragraf {
+  background-color: $paragraf-backgroundColor;
+  padding: $paragraf-padding;
+  font-size: 34px;
   margin: 10px;
 }

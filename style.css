@@ -1,4 +1,10 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: bisque;
   color: black;
@@ -32,6 +38,118 @@ body {
 .kapsayıcı {
   width: 200px;
   height: 250px;
+  background-color: aqua;
+  margin: 10px;
+}
+
+.header {
+  background-color: blueviolet;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .logo {
+  background-color: antiquewhite;
+  padding: 10px;
+  font-size: 40px;
+  border-radius: 20px;
+}
+.header .nav {
+  display: flex;
+  gap: 10px;
+}
+.header .nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+.header .nav a:hover {
+  color: red;
+  scale: 1.2;
+}
+.header button {
+  border: none;
+  outline: none;
+  padding: 15px;
+  margin-right: 30px;
+  border-radius: 10px;
+}
+.header button:hover {
+  background-color: darkgreen;
+  transform: scale(0.9);
+}
+
+/*
+* Scss Miras Yapısı: 
+- Css de ortak kodları farklı yerlerde kullanırız.(ör: bir kapsayıcı içerisindeki elemanları hizalarken flex yapısını aktif edeceksek kullanacağımız kodlar aynıdır.) Scss miras yapısı bunu bir ata kapsayıcı için oluşturup çocuk kapsayıcılara vermemize olanak tanır.
+
+* Miras yapısının kullanımı ise ortak özellikler bir class yapısı altınfa toplanır.Sonrasında bu özelliklerin kullanılacağı yerde '@extend' ile bu class yapısı çağrılır.
+
+*/
+.flex-yapısı, footer .center ul, footer .left-area, footer {
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  background-color: chocolate;
+  margin-top: 30px;
+  padding: 10px;
+  justify-content: space-between;
+}
+footer .left-area {
+  background-color: aqua;
+  padding: 10px;
+}
+footer .left-area i {
+  font-size: 30px;
+}
+footer .center {
+  background-color: blue;
+}
+footer .center ul {
+  gap: 10px;
+  padding: 20px;
+}
+footer .center ul li {
+  list-style: none;
+}
+footer .right-area {
+  background-color: antiquewhite;
+  width: 200px;
+}
+
+.btn, .btn1,
+.btn2 {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.btn:hover, .btn1:hover,
+.btn2:hover {
+  transform: scale(1.2);
+}
+
+.btn1 {
+  background-color: darkblue;
+  color: wheat;
+  font-size: 22px;
+}
+
+.btn2 {
+  background-color: darkorange;
+}
+
+/*
+* Scss dosyalarının daha moduler yönetimi iiçin birden fazla dosya oluştururuz.(Değişkenler için ayrı bir dosya,header kısımı için ayrı bir dosya,footer,main,...) Style.scss haricinde oluşturulan bu diğer dosyaları tanımlarken dosya adının başına '_' konulur. Sonrasında bu dosyaya isim verilir.Son olarak bu dosya içerisindeki verileri kullanmak istediğimiz yerde 'import' ile dosya yolunu belirtiriz.
+
+*/
+.paragraf {
   background-color: orange;
+  padding: 20px;
+  font-size: 34px;
   margin: 10px;
 }/*# sourceMappingURL=style.css.map */
